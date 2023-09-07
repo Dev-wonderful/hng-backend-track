@@ -1,6 +1,6 @@
 """A simple flask app to handle a get request"""
 from flask import Flask, jsonify, request
-from datetime import datetime
+from datetime import datetime, timezone
 from os import getenv
 
 # environment variables for the flexibility of the hosting environment
@@ -13,14 +13,14 @@ app = Flask(__name__)
 @app.route("/api", strict_slashes=False)
 def index():
     """accept get request with query params"""
-    date = datetime.utcnow()
+    date = datetime.now(timezone.utc)
     base = 'https://github.com/Dev-wonderful/hng-backend-track'
     file = 'blob/main/stage-one/app.py'
     response = {
         'slack_name': request.args.get('slack_name'),
         'current_day': date.strftime('%A'),
         'track': request.args.get('track'),
-        'utc_time': date.isoformat(),
+        'utc_time': date.strftime('%Y-%m-%dT%H:%M:%SZ'),
         'github_file_url': base,
         'github_repo_url': f'{base}/{file}',
         'status_code': 200
