@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/api", strict_slashes=False)
 def index():
     """accept get request with query params"""
-    date = datetime.now()
+    date = datetime.utcnow()
     base = 'https://github.com/Dev-wonderful/hng-backend-track'
     file = 'blob/main/stage-one/app.py'
     response = {
