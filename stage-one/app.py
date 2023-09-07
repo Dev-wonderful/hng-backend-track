@@ -12,15 +12,17 @@ app = Flask(__name__)
 
 @app.route("/api", strict_slashes=False)
 def index():
-    """accept get request"""
+    """accept get request with query params"""
     date = datetime.now()
+    base = 'https://github.com/Dev-wonderful/hng-backend-track'
+    file = 'blob/main/stage-one/app.py'
     response = {
         'slack_name': request.args.get('slack_name'),
         'current_day': date.strftime('%A'),
         'track': request.args.get('track'),
         'utc_time': date.isoformat(),
-        'github_file_url': 'https://github.com/Dev-wonderful/hng-backend-track',
-        'github_repo_url': 'https://github.com/Dev-wonderful/hng-backend-track',
+        'github_file_url': base,
+        'github_repo_url': f'{base}/{file}',
         'status_code': 200
     }
 
