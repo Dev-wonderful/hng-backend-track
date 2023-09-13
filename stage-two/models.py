@@ -15,4 +15,4 @@ except Exception as error:
 
 class Users(Document):
     """users Collection in KitchenQuest db"""
-    name = StringField(max_length=120, required=True, unique=True)
+    name = StringField(max_length=120, required=True, unique=False)
