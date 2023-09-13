@@ -26,5 +26,28 @@ git clone https://github.com/Dev-wonderful/hng-backend-track.git
 cd hng-backend-track/stage-two
 pip install -r requirements.txt 
 ```
+When Installation is done, start your mongodb server if it isn't active and run this command to start the flask server
 
-[Api Uml](https://drive.google.com/file/d/1L3-1EnbEksxkn54Ho2EapbH8adMchpld/view?usp=sharing)
+```
+python -m app
+```
+
+Open a second terminal, run the `main.py` to test that all is working fine
+
+```
+python main.py
+```
+If it fails, check your mongodb server
+
+## Available Endpoints
+
+```
+POST    /api            => user_id (string)
+GET     /api/user_id    => user dict (JSON)
+PUT     /api/user_id    => success (string)
+DELETE  /api/user_id    => success (string)
+```
+
+### UML Diagram
+
+[This is a link to the UML diagram showing the structure and relationship between the api routes and the user model](https://drive.google.com/file/d/1L3-1EnbEksxkn54Ho2EapbH8adMchpld/view?usp=sharing)
