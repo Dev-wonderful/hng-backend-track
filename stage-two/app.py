@@ -28,6 +28,8 @@ def index(user_id=None):
 
     if request.method == 'POST':
         name = request.form.get('name')
+        print(f'name: {name}')
+        print(f'name type: {type(name)}')
         new_user = Users(name=name)
         try:
             new_user.validate()
