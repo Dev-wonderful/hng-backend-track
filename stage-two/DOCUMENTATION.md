@@ -1,5 +1,9 @@
 ## FORMATS
 In this documentation, I would be making use of python requests module for examples
+
+BASE_URL= [https://stage-one-9fjg.onrender.com](https://stage-one-9fjg.onrender.com)
+
+ENDPOINT = [https://stage-one-9fjg.onrender.com/api](https://stage-one-9fjg.onrender.com/api)
 #### POST
 The POST request needs a name to be passed in the request body as a form-data, the value returned is the `user_id` to be used in subsequent HTTP methods, concerning this user
 ```
