@@ -98,3 +98,5 @@ The start command would be to start a production level application server like g
 gunicorn app:app
 ```
 
+Set your appropriate environment variables like your mongodb connection uri in your hosting platform
+
