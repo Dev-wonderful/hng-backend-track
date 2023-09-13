@@ -27,9 +27,13 @@ def index(user_id=None):
         return jsonify(user_dict)
 
     if request.method == 'POST':
-        name = request.form.get('name')
-        print(f'name: {name}')
-        print(f'name type: {type(name)}')
+        if request.form.get('name') is not None:
+            name = request.form.get('name')
+            print(f'name: {name}')
+            print(f'name type: {type(name)}')
+        else:
+            name = request.get_json().get('name')
+            print(name)
         new_user = Users(name=name)
         try:
             new_user.validate()
@@ -39,8 +43,12 @@ def index(user_id=None):
         return str(new_user.id)
 
     if request.method == 'PUT':
-        name = request.form.get('name')
+        if request.form.get('name') is not None:
+            name = request.form.get('name')
+        else:
+            name = request.get_json().get('name')
         try:
+            print(name)
             user = Users.objects.get(id=user_id)
             user.name = name
             user.validate()
