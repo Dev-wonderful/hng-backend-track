@@ -2,6 +2,7 @@ from __init__ import db
 from uuid import uuid4
 from datetime import datetime
 
+
 def generate_uuid():
     return uuid4().hex
 
@@ -17,7 +18,7 @@ class Videos(db.Model):
         default=generate_uuid
     )
     name = db.Column(db.String(60), nullable=False, unique=True)
-    data = db.Column(db.LargeBinary(length=(1024*1024*150)-1), nullable=False)
+    data = db.Column(db.LargeBinary((1024*1024*150)-1), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
 
