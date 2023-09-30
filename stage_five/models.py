@@ -21,8 +21,9 @@ class Videos(db.Model):
     created_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name, data):
         self.name = name
+        self.data = data
 
     def __repr__(self):
         return "id: {}, name: {}, created_at: {},\
