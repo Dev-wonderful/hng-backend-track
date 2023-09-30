@@ -3,23 +3,26 @@ from flask_cors import CORS
 from flask import Flask, current_app, send_file, request, redirect, url_for
 from config import App_Config
 from models import Videos
+from io import BytesIO
+from __init__ import create_app
 import base64
 import os
 import re
-from io import BytesIO
 
 
-db = SQLAlchemy()
-app = Flask(__name__)
-app.config.from_object(App_Config)
-if app.config["SQLALCHEMY_DATABASE_URI"]:
-    print(f"using db: {app.config['SQLALCHEMY_DATABASE_URI']}")
+# db = SQLAlchemy()
+# app = Flask(__name__)
+# app.config.from_object(App_Config)
+# if app.config["SQLALCHEMY_DATABASE_URI"]:
+#     print(f"using db: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
-# Initialize CORS
-CORS(app, supports_credentials=True)
+# # Initialize CORS
+# CORS(app, supports_credentials=True)
 
-# Initialize SQLAlchemy
-db.init_app(app)
+# # Initialize SQLAlchemy
+# db.init_app(app)
+
+app = create_app()
 
 @app.route('/api/video/upload', methods=['POST'])
 def upload_video():
@@ -78,11 +81,6 @@ def download():
     
     return send_file(BytesIO(base64.b64decode(binary_data)),
                      download_name="video.mp4", as_attachment=True)
-
-
-# create db tables from models if not exists
-with app.app_context():
-    db.create_all()
 
 
 if __name__ == "__main__":
