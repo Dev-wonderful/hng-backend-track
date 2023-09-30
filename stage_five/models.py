@@ -18,13 +18,13 @@ class Videos(db.Model):
         default=generate_uuid
     )
     name = db.Column(db.String(60), nullable=False, unique=True)
-    data = db.Column(db.LargeBinary((1024*1024*150)-1), nullable=False)
+    url = db.Column(db.String(120), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime(), default=datetime.now, nullable=False)
 
-    def __init__(self, name, data):
+    def __init__(self, name, url):
         self.name = name
-        self.data = data
+        self.url = url
 
     def __repr__(self):
         return "id: {}, name: {}, created_at: {},\
@@ -47,6 +47,7 @@ class Videos(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "url": self.url,
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
